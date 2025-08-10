@@ -1,111 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hamza Farooq | Digital Marketer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f4f4f4;
-      color: #333;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Hamza Farooq | Digital Marketer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* brand */
+    --ink:#0c0c0f;
+    --bg:#0b0b12;
+    --card:#11121a;
+    --muted:#b9b9c7;
+    --white:#f7f7f7;
+    --accent:#7c3aed;        /* purple */
+    --accent-2:#a78bfa;      /* light purple */
+    --glow: 0 0 24px rgba(124,58,237,.55), 0 0 64px rgba(167,139,250,.35);
+    --radius:16px;
+    --bg-url: url('https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?q=80&w=2400&auto=format&fit=crop'); /* replace with yours */
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; color:#e9e9f4; background:var(--bg); font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;
+  }
 
-    /* Header with Profile */
-    header {
-      background: #ff0000;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-      position: relative;
-    }
-    .profile-pic {
-      width: 120px;
-      height: 120px;
-      background: #fff;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto 15px;
-      border: 3px solid white;
-    }
-    .profile-pic img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  /* full-page blurry background */
+  .bg{
+    position:fixed; inset:0; z-index:-2;
+    background-image: var(--bg-url);
+    background-size:cover; background-position:center;
+    filter: blur(10px) brightness(.45) saturate(1.1);
+    transform: scale(1.05);
+  }
+  .bg-overlay{
+    position:fixed; inset:0; z-index:-1;
+    background:
+      radial-gradient(1000px 600px at 10% -10%, rgba(124,58,237,.35), transparent 60%),
+      radial-gradient(900px 600px at 110% 20%, rgba(167,139,250,.18), transparent 60%),
+      linear-gradient(180deg, rgba(12,12,18,.6), rgba(12,12,18,.85));
+    pointer-events:none;
+  }
 
-    section {
-      padding: 40px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+  header{
+    padding:72px 20px 48px; text-align:center; position:relative;
+  }
+  .container{max-width:1100px; margin:auto; padding:0 20px}
 
-    h1, h2 {
-      margin-bottom: 20px;
-      text-align: center;
-    }
+  .profile{
+    display:flex; flex-direction:column; align-items:center; gap:12px;
+  }
+  .profile-pic{
+    width:132px;height:132px;border-radius:50%;
+    padding:3px;
+    background: conic-gradient(from 140deg, #2b2246, var(--accent), #2b2246);
+    box-shadow: var(--glow);
+  }
+  .profile-pic img{
+    width:100%; height:100%; border-radius:50%;
+    display:block; object-fit:cover; background:#222;
+  }
+  h1{
+    margin:6px 0 4px; font: 800 42px/1.05 'Playfair Display', serif;
+    letter-spacing:.2px;
+    text-shadow: 0 2px 24px rgba(124,58,237,.35);
+  }
+  .tag{margin:0;color:#d7d7e6; opacity:.9}
 
-    /* Cards Grid */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+  /* buttons */
+  .btns{display:flex; gap:14px; justify-content:center; margin:18px 0 0; flex-wrap:wrap}
+  .btn{
+    appearance:none; border:none; cursor:pointer;
+    padding:12px 18px; border-radius:999px; font-weight:700; letter-spacing:.3px;
+    transition:transform .15s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{
+    color:#fff; background: linear-gradient(135deg, var(--accent), #5b21b6);
+    box-shadow: var(--glow);
+  }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow: 0 0 28px rgba(124,58,237,.75), 0 0 80px rgba(167,139,250,.45); }
+  .btn-ghost{
+    background: #f4f3ff; color:#0b0b0f; /* off-white with black text */
+    box-shadow: 0 1px 0 rgba(255,255,255,.15) inset, 0 6px 18px rgba(0,0,0,.25);
+    border:1px solid rgba(255,255,255,.65);
+  }
+  .btn-ghost:hover{ transform:translateY(-1px); background:#ffffff; }
 
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      text-align: center;
-      min-height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+  section{padding:48px 0}
+  section h2{margin:0 0 18px; text-align:center; font: 800 26px/1.2 'Inter', sans-serif}
+  .lead{max-width:860px;margin:0 auto 8px;text-align:center;color:var(--muted)}
 
-    /* Popup-style button */
-    .popup-btn {
-      background: #ff0000;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
-      border: none;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
-      transition: all 0.3s ease;
-    }
-    .popup-btn:hover {
-      background: #cc0000;
-    }
+  .grid{
+    display:grid; gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  }
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(6px);
+    border-radius: var(--radius);
+    padding:18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,.35);
+    min-height:140px;
+  }
+  .card h3{margin:0 0 6px; color:#fff}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #333;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+  .contact a{color:var(--accent-2)}
+  .contact a:hover{text-decoration:underline}
+
+  footer{
+    text-align:center; padding:26px 12px; color:#c9c9d6;
+    border-top:1px solid rgba(255,255,255,.08);
+    background: rgba(0,0,0,.45);
+  }
+</style>
 </head>
 <body>
- <header>
-  <div class="profile-pic">
-    https://github.com/malikhamza324/profile_jpg.git
+
+<div class="bg"></div><div class="bg-overlay"></div>
+
+<header>
+  <div class="profile">
+    <div class="profile-pic">
+      <!-- replace with your direct/raw image link -->
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop" alt="Hamza Farooq">
+    </div>
+    <h1>Hamza Farooq</h1>
+    <p class="tag">Digital Marketer • Social Media Expert • Shopify Developer</p>
+    <div class="btns">
+      <button class="btn btn-primary" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View My Work</button>
+      <a class="btn btn-ghost" href="mailto:maven3493@gmail.com">Contact Me</a>
+    </div>
   </div>
-  <h1>Hamza Farooq</h1>
-  <p>Digital Marketer | Social Media Expert | Shopify Developer</p>
-  <button class="popup-btn">View My Work</button>
 </header>
 
+<main class="container">
   <section>
     <h2>About Me</h2>
-    <p>I am a passionate Digital Marketer with expertise in Meta Ads, Shopify, SEO, Video Editing, and Canva designs. I’ve worked with companies like Jahangir Packages and Spatialox to grow their online presence. Let’s build your brand next!</p>
+    <p class="lead">
+      Results-driven marketer with Meta Ads, Shopify, SEO, video editing and Canva expertise. I’ve helped
+      <strong>Jahangir Packages</strong>, <strong>Spatialox</strong>, and others scale growth with data-backed campaigns and standout creative.
+    </p>
   </section>
 
   <section>
@@ -120,14 +155,14 @@
     </div>
   </section>
 
-  <section>
+  <section id="projects">
     <h2>Projects</h2>
     <div class="grid">
-      <div class="card"><h3>Jahangir Packages</h3><p>Handled complete ad strategy and content marketing.</p></div>
-      <div class="card"><h3>Spatialox</h3><p>Brand development and digital outreach campaigns.</p></div>
-      <div class="card"><h3>Herbal Hair Care</h3><p>Built brand identity and managed social growth.</p></div>
-      <div class="card"><h3>MapBakes</h3><p>Developed a full brand identity, social media strategy, and digital presence for MapBakes – an International Map Selling Brand.</p></div>
-      <div class="card"><h3>Jahangir Group</h3><p>Managed group-wide branding and digital campaigns, focusing on packaging, sustainability, and online presence.</p></div>
+      <div class="card"><h3>Jahangir Packages</h3><p>Full-funnel strategy, creative production, tracking and CRO.</p></div>
+      <div class="card"><h3>Spatialox</h3><p>Brand system, outbound engine, and multi-platform content.</p></div>
+      <div class="card"><h3>Herbal Hair Care</h3><p>Identity, paid social, community building, and UGC pipeline.</p></div>
+      <div class="card"><h3>MapBakes</h3><p>Global launch with social strategy + e-commerce setup.</p></div>
+      <div class="card"><h3>Jahangir Group</h3><p>Group-wide branding & sustainability narrative across digital.</p></div>
     </div>
   </section>
 
@@ -135,24 +170,30 @@
     <h2>Certifications</h2>
     <div class="grid">
       <div class="card">
-        <ul style="list-style: none; padding: 0;">
-          <li><strong>Enablers</strong>: Certified in Digital Marketing and Search Engine Optimization (SEO)</li>
-          <li><strong>DigiSkills</strong>: Certified in Digital Marketing</li>
-          <li><strong>DigiSkills</strong>: Certified in Graphic Designing</li>
+        <ul style="margin:0;padding-left:18px;color:#ddd">
+          <li><strong>Enablers</strong> — Digital Marketing & SEO</li>
+          <li><strong>DigiSkills</strong> — Digital Marketing</li>
+          <li><strong>DigiSkills</strong> — Graphic Design</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section>
+  <section class="contact">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:maven3493@gmail.com">maven3493@gmail.com</a></p>
-    <p>Phone: <a href="tel:+923303838153">+92-300-3303838153</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/malik-hamza-farooq/">linkedin.com/in/hamzafarooq</a></p>
+    <div class="grid">
+      <div class="card">
+        <p>Email: <a href="mailto:maven3493@gmail.com">maven3493@gmail.com</a></p>
+        <p>Phone: <a href="tel:+923303838153">+92 330 3838153</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/malik-hamza-farooq/">linkedin.com/in/malik-hamza-farooq</a></p>
+      </div>
+    </div>
   </section>
+</main>
 
-  <footer>
-    <p>© 2025 Hamza Farooq. All rights reserved.</p>
-  </footer>
+<footer>
+  © 2025 Hamza Farooq. All rights reserved.
+</footer>
+
 </body>
 </html>
